@@ -929,6 +929,13 @@ namespace COLLADABU
 			setStringFromMatches(path, uriRef, uriMatches, 5);
 			setStringFromMatches(query, uriRef, uriMatches, 6);
 			setStringFromMatches(fragment, uriRef, uriMatches, 9);
+
+			if ( scheme.length() == 1 ) // handle absolute windows path
+			{
+				path = scheme + ":/" + path;
+				scheme = SCHEME_FILE;
+			}
+
 			return true;
 		}
 

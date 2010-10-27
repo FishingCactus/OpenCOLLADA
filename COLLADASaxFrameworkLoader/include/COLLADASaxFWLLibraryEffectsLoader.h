@@ -252,7 +252,7 @@ namespace COLLADASaxFWL
 
 
 		/** We don't need to do anything here.*/
-		virtual bool begin__source____NCName(){return true;}
+		virtual bool begin__source____NCName(){mCurrentSamplerSource.clear(); return true;}
 
 		/** We don't need to do anything here.*/
 		virtual bool end__source____NCName(){return true;}

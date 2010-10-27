@@ -189,7 +189,7 @@ namespace COLLADASaxFWL
 				/* const SamplerInfo& samplerInfo = it->second; */ /* UNUSED */
 				colorOrTexture->setType(COLLADAFW::ColorOrTexture::TEXTURE);
 				COLLADAFW::Texture& texture = colorOrTexture->getTexture();
-                texture.setUniqueId ( createUniqueId(COLLADAFW::Texture::ID()) );
+				texture.setUniqueId ( createUniqueId(COLLADAFW::Texture::ID()) );
 				texture.setSamplerId( samplerIndex );
 				if ( attributeData.texcoord )
 				{
@@ -394,6 +394,7 @@ namespace COLLADASaxFWL
         ++mSurfaceIndex;
 
 		mCurrentSurface.surfaceType = attributeData.type;
+		mCurrentSurfaceInitFrom.clear();
 		return true;
 	}
 
