@@ -194,7 +194,9 @@ set(SRC
 	src/COLLADASaxFWLVisualSceneLoader.cpp
 	src/COLLADASaxFWLGeometryLoader.cpp
 	src/COLLADASaxFWLExtraDataElementHandler.cpp
+        src/COLLADASaxFWLSplineLoader.cpp
 
+        src/generated14/COLLADASaxFWLSplineLoader14.cpp
 	src/generated14/COLLADASaxFWLColladaParserAutoGen14PrivateNameMap.cpp
 	src/generated14/COLLADASaxFWLLibraryNodesLoader14.cpp
 	src/generated14/COLLADASaxFWLGeometryLoader14.cpp

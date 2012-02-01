@@ -162,8 +162,9 @@ set(SRC
 	src/COLLADAFWFileInfo.cpp
 	src/COLLADAFWSkinControllerData.cpp
 	src/COLLADAFWMesh.cpp
-
-	${INST_SRC}
+        src/COLLADAFWSpline.cpp
+	
+        ${INST_SRC}
 )
 
 set(TARGET_LIBS
