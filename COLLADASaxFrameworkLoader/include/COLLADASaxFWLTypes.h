@@ -18,6 +18,7 @@ http://www.opensource.org/licenses/mit-license.php
 #include "COLLADAFWTypes.h"
 
 #include <list>
+#include <vector>
 
 namespace COLLADAFW
 {
