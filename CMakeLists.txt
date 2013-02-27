@@ -39,7 +39,7 @@ cmake_policy(SET CMP0014 NEW)
 set(CMAKE_BUILD_TYPE_INIT "Release")
 
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/Externals/cmake-modules")
-set(CMAKE_CONFIGURATION_TYPES "Debug;Release" CACHE STRING "Only do Release and Debug" FORCE )
+set(CMAKE_CONFIGURATION_TYPES "Debug;Release;RelWithDebInfo" CACHE STRING "Only do Release and Debug" FORCE )
 mark_as_advanced(CMAKE_CONFIGURATION_TYPES)
 
 
@@ -160,7 +160,6 @@ endif ()
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${C_WARNINGS}")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${CXX_WARNINGS}")
 
-
 #-----------------------------------------------------------------------------
 # Install vars
 
@@ -178,10 +177,17 @@ set(LIBRARY_OUTPUT_PATH ${CMAKE_BINARY_DIR}/lib CACHE INTERNAL "" FORCE )
 #-----------------------------------------------------------------------------
 # Set default config options
 
-option(USE_STATIC "Build static libraries"  ON)
-option(USE_SHARED "Build shared libraries"  OFF)
-option(USE_LIBXML "Use LibXml2 parser"      ON)
-option(USE_EXPAT  "Use expat parser"        OFF)
+option(USE_STATIC "Build static libraries"                              ON)
+option(USE_SHARED "Build shared libraries"                              OFF)
+option(USE_LIBXML "Use LibXml2 parser"                                  ON)
+option(USE_EXPAT  "Use expat parser"                                    OFF)
+option(USE_C7_DEBUG_INFO "Use C7 debug information format (MSVC only)"  OFF)
+
+IF(MSVC AND USE_C7_DEBUG_INFO)
+	FOREACH(flag CMAKE_C_FLAGS_DEBUG CMAKE_CXX_FLAGS_DEBUG CMAKE_C_FLAGS_RELWITHDEBINFO CMAKE_CXX_FLAGS_RELWITHDEBINFO)
+		STRING(REGEX REPLACE "/Zi" "/Z7" ${flag} "${${flag}}")
+	ENDFOREACH(flag)
+ENDIF(MSVC AND USE_C7_DEBUG_INFO)
 
 #adding xml2
 if (USE_LIBXML)
