@@ -196,12 +196,17 @@ namespace COLLADAMax
 				{
 					COLLADASW::InstanceGeometry instanceGeometry ( mSW );
 
-					String geometryId = GeometriesExporter::getGeometryId(*mDocumentExporter->getExportedObjectExportNode(ObjectIdentifier(exportNode->getInitialPose())));
-					assert( !geometryId.empty() );
+					const ExportNode * exportedExportNode = mDocumentExporter->getExportedObjectExportNode(ObjectIdentifier(exportNode->getInitialPose()));
 
-					instanceGeometry.setUrl ( "#" + geometryId );
-					fillInstanceMaterialList(instanceGeometry.getBindMaterial().getInstanceMaterialList(), exportNode);
-					instanceGeometry.add();
+					if( exportedExportNode != 0 )
+					{
+						String geometryId = GeometriesExporter::getGeometryId( *exportedExportNode );
+						assert( !geometryId.empty() );
+
+						instanceGeometry.setUrl ( "#" + geometryId );
+						fillInstanceMaterialList(instanceGeometry.getBindMaterial().getInstanceMaterialList(), exportNode);
+						instanceGeometry.add();
+					}
 				}
 			} 
 			if ( exportNode->getType() == ExportNode::SPLINE )
