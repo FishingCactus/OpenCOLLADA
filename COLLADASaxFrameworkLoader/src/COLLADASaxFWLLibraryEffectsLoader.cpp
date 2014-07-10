@@ -443,12 +443,14 @@ namespace COLLADASaxFWL
     {
         if ( attributeData.sid )
             mCurrentNewParamSid = (const char *)attributeData.sid;	
+        addToSidTree( 0, (const char *) attributeData.sid );
         return true;
     }
 
     //------------------------------
     bool LibraryEffectsLoader::end__newparam____fx_newparam_common()
     {
+        moveUpInSidTree();
         mCurrentNewParamSid.clear();
         return true;
     }
@@ -456,7 +458,17 @@ namespace COLLADASaxFWL
     //------------------------------
     bool LibraryEffectsLoader::begin__newparam____cg_newparam( const newparam____cg_newparam__AttributeData& attributeData )
     {
-        addToSidTree( 0, (const char *) attributeData.sid ); 
+        if ( attributeData.sid )
+            mCurrentNewParamSid = (const char *)attributeData.sid;  
+        addToSidTree( 0, (const char *) attributeData.sid );
+        return true;
+    }
+
+    //------------------------------
+    bool LibraryEffectsLoader::end__newparam____cg_newparam()
+    {
+        moveUpInSidTree();
+        mCurrentNewParamSid.clear();
         return true;
     }
 
@@ -464,13 +476,15 @@ namespace COLLADASaxFWL
 	bool LibraryEffectsLoader::begin__newparam____common_newparam_type( const newparam____common_newparam_type__AttributeData& attributeData )
 	{
 		if ( attributeData.sid )
-			mCurrentNewParamSid = (const char *)attributeData.sid;	
+			mCurrentNewParamSid = (const char *)attributeData.sid;
+		addToSidTree( 0, (const char *) attributeData.sid );
 		return true;
 	}
 
 	//------------------------------
 	bool LibraryEffectsLoader::end__newparam____common_newparam_type()
 	{
+		moveUpInSidTree();
 		mCurrentNewParamSid.clear();
 		return true;
 	}
