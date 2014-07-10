@@ -456,7 +456,14 @@ namespace COLLADASaxFWL
     //------------------------------
     bool LibraryEffectsLoader::begin__newparam____cg_newparam( const newparam____cg_newparam__AttributeData& attributeData )
     {
-        addToSidTree( 0, (const char *) attributeData.sid ); 
+        addToSidTree( 0, (const char *) attributeData.sid );
+        return true;
+    }
+
+    //------------------------------
+    bool LibraryEffectsLoader::end__newparam____cg_newparam()
+    {
+        moveUpInSidTree();
         return true;
     }
 
