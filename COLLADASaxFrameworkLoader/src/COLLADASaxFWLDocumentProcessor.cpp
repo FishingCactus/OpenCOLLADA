@@ -44,10 +44,11 @@ namespace COLLADASaxFWL
 		, mSaxParserErrorHandler( saxParserErrorHandler )
 	{
 
-	}	
+	}
     //------------------------------
 	DocumentProcessor::~DocumentProcessor()
 	{
+		COLLADABU_ASSERT( mCurrentSidTreeNode == mColladaLoader->getSidTreeRoot() );
 	}
 
 	//---------------------------------
