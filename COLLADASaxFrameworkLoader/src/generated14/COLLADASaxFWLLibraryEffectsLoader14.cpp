@@ -89,6 +89,12 @@ attrData.sid = attributeData.sid;
 return mLoader->begin__newparam____cg_newparam(attrData);
 }
 
+bool LibraryEffectsLoader14::end__newparam____cg_newparam()
+{
+SaxVirtualFunctionTest14(end__newparam____cg_newparam());
+return mLoader->end__newparam____cg_newparam();
+}
+
 bool LibraryEffectsLoader14::begin__surface____fx_surface_common( const COLLADASaxFWL14::surface____fx_surface_common__AttributeData& attributeData )
 {
 SaxVirtualFunctionTest14(begin__surface____fx_surface_common(attributeData));
