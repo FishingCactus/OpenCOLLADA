@@ -69,6 +69,8 @@ namespace COLLADAMax
 		static const String NEAR_END_ATTENUATION_PARAMETER;
 		static const String FAR_START_ATTENUATION_PARAMETER;
 		static const String FAR_END_ATTENUATION_PARAMETER;
+		static const String HOTSPOT_BEAM_PARAMETER;
+		static const String FALLOFF_PARAMETER;
 
 
 		static const String SHADOW_ATTRIBS;

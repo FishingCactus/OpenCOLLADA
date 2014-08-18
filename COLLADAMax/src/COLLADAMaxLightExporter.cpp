@@ -93,6 +93,8 @@ namespace COLLADAMax
 	const String LightExporter::NEAR_END_ATTENUATION_PARAMETER = "attenuation_near_end";
 	const String LightExporter::FAR_START_ATTENUATION_PARAMETER = "attenuation_far_start";
 	const String LightExporter::FAR_END_ATTENUATION_PARAMETER = "attenuation_far_end";
+	const String LightExporter::HOTSPOT_BEAM_PARAMETER = "hotspot_beam";
+	const String LightExporter::FALLOFF_PARAMETER = "falloff";
 
 
 	const String LightExporter::SHADOW_ATTRIBS = "shadow_attributes";
@@ -342,6 +344,12 @@ namespace COLLADAMax
 			addExtraChildParameter(LIGHT_ELEMENT, NEAR_END_ATTENUATION_PARAMETER, light->GetAtten( 0, ATTEN1_END ) );
 			addExtraChildParameter(LIGHT_ELEMENT, FAR_START_ATTENUATION_PARAMETER, light->GetAtten( 0, ATTEN_START ) );
 			addExtraChildParameter(LIGHT_ELEMENT, FAR_END_ATTENUATION_PARAMETER, light->GetAtten( 0, ATTEN_END ) );
+
+			if ( isSpot )
+			{
+				addExtraChildParameter(LIGHT_ELEMENT, HOTSPOT_BEAM_PARAMETER, light->GetHotspot( 0 ) );
+				addExtraChildParameter(LIGHT_ELEMENT, FALLOFF_PARAMETER, light->GetFallsize( 0 ) );
+			}
 
 			exportShadowParameters(light);
 
