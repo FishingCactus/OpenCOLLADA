@@ -402,6 +402,13 @@ namespace COLLADAMax
 			else if (shadowType == 1) 
 				addExtraChildParameter(SHADOW_ATTRIBS, SHADOW_TYPE, SHADOW_TYPE_RAYTRACE);
 
+			Point3 shadowColor = light->GetShadColor(mDocumentExporter->getOptions().getAnimationStart());
+			String shadowColorString = COLLADASW::Utils::toString(shadowColor.x) + COLLADASW::Utils::toString(shadowColor.y) + COLLADASW::Utils::toString(shadowColor.z);
+			addExtraChildParameter(SHADOW_ATTRIBS, SHADOW_PROJ_COLOR, shadowColorString);
+			addExtraChildParameter(SHADOW_ATTRIBS, SHADOW_PROJ_COLOR_MULT, light->GetShadMult(0));
+
+			addExtraChildParameter(SHADOW_ATTRIBS, LIGHT_AFFECTS_SHADOW, light->GetLightAffectsShadow());
+
 			// GetExclusion list
 			ExclList& exclusions = light->GetExclusionList();
 			int exclusionsCount = exclusions.Count();
@@ -450,15 +457,6 @@ namespace COLLADAMax
 					if ( !imageId.empty() )
 						addExtraChildParameter(SHADOW_ATTRIBS, SHADOW_PROJ_IMAGE, "#" + imageId);
 				}
-				else
-				{
-					// Non-animatable is all they get
-					Point3 shadowColor = light->GetShadColor(mDocumentExporter->getOptions().getAnimationStart());
-					String shadowColorString = COLLADASW::Utils::toString(shadowColor.x) + COLLADASW::Utils::toString(shadowColor.y) + COLLADASW::Utils::toString(shadowColor.z);
-					addExtraChildParameter(SHADOW_ATTRIBS, SHADOW_PROJ_COLOR, shadowColorString);
-					addExtraChildParameter(SHADOW_ATTRIBS, SHADOW_PROJ_COLOR_MULT, light->GetShadMult(0));
-				}
-				addExtraChildParameter(SHADOW_ATTRIBS, LIGHT_AFFECTS_SHADOW, light->GetLightAffectsShadow());
 			}
 		}
 	}
