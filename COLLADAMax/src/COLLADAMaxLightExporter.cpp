@@ -83,6 +83,7 @@ namespace COLLADAMax
 
 
 
+	const String LightExporter::ENABLED_PARAMETER = "enabled";
 	const String LightExporter::OVERSHOOT_PARAMETER = "overshoot";
 	const String LightExporter::MULTIPLIER_PARAMETER = "multiplier";
 	const String LightExporter::DECAY_TYPE_PARAMETER = "decay_type";
@@ -328,6 +329,9 @@ namespace COLLADAMax
 				return;
 			}
 
+			LightState light_state;
+			light->EvalLightState(0, Interval::FOREVER, &light_state);
+			addExtraChildParameter(LIGHT_ELEMENT, ENABLED_PARAMETER, light_state.on);
 
 			// Export the overshoot flag for directional lights
 			if (isDirectional || isSpot)

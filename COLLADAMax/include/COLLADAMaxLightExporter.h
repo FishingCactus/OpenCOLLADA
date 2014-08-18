@@ -59,6 +59,7 @@ namespace COLLADAMax
 		static const ExtraParameter SKYLIGHT_PARAMETERS[];
 
 
+		static const String ENABLED_PARAMETER;
 		static const String OVERSHOOT_PARAMETER;
 		static const String MULTIPLIER_PARAMETER;
 		static const String DECAY_TYPE_PARAMETER;
