@@ -403,7 +403,7 @@ namespace COLLADAMax
 				addExtraChildParameter(SHADOW_ATTRIBS, SHADOW_TYPE, SHADOW_TYPE_RAYTRACE);
 
 			Point3 shadowColor = light->GetShadColor(mDocumentExporter->getOptions().getAnimationStart());
-			String shadowColorString = COLLADASW::Utils::toString(shadowColor.x) + COLLADASW::Utils::toString(shadowColor.y) + COLLADASW::Utils::toString(shadowColor.z);
+			String shadowColorString = COLLADASW::Utils::toString(shadowColor.x) + " " + COLLADASW::Utils::toString(shadowColor.y) +  " " + COLLADASW::Utils::toString(shadowColor.z);
 			addExtraChildParameter(SHADOW_ATTRIBS, SHADOW_PROJ_COLOR, shadowColorString);
 			addExtraChildParameter(SHADOW_ATTRIBS, SHADOW_PROJ_COLOR_MULT, light->GetShadMult(0));
 
