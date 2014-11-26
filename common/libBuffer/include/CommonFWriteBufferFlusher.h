@@ -16,11 +16,17 @@
 #if (defined(WIN64) || defined(_WIN64) || defined(__WIN64__)) || (defined(WIN32) || defined(_WIN32) || defined(__WIN32__) || defined(__NT__))
 #ifdef __GNUC__
 #	include <tr1/unordered_map>
+    #define UnorderedMap std::tr1::unordered_map
 #else
 #	include <unordered_map>
+    #define UnorderedMap std::unordered_map
 #endif
+#elif defined(__clang__)
+#   include <unordered_map>
+    #define UnorderedMap std::unordered_map
 #else
 #	include <tr1/unordered_map>
+    #define UnorderedMap std::tr1::unordered_map
 #endif
 
 /* size_t for gcc, may want to move this include some place else - campbell */
@@ -43,7 +49,7 @@ namespace Common
 #else
 		typedef __int64 FilePosType;
 #endif
-		typedef std::tr1::unordered_map<MarkId, FilePosType > MarkIdToFilePos;
+		typedef UnorderedMap<MarkId, FilePosType > MarkIdToFilePos;
 	public:
 		static const size_t DEFAUL_BUFFER_SIZE = 64*1024;
 	private:
