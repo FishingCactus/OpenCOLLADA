@@ -171,7 +171,7 @@ namespace COLLADASaxFWL
 					fragmentExpression->setFragment( asts[0] );
 					if ( !fragmentSuccess )
 					{
-						return false;
+						return nullptr;
 					}
 				}
 				const COLLADACsymbol::ParameterList& parameters =  csymbol->getParameterList();
